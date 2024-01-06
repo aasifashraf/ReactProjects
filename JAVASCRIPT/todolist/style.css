@@ -1,0 +1,137 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-image:url(./images/background.jpg) ;
+    backdrop-filter: blur(5px);
+    background-size:cover;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ayein{
+    display: none ;
+    justify-content: center;
+    background-color: rgb(241, 144, 144);
+    width:300px;
+    border-radius: 10px 15px 0px 0px;
+    padding: 7px;
+    
+}
+.ayein p span{
+    padding-right: 20px;
+    font-weight: bolder;
+}
+.container{
+    background: hsla(217, 100%, 50%, 1);
+
+    background: linear-gradient(90deg, hsla(217, 100%, 50%, 0.9) 0%, hsla(186, 100%, 69%, 0.8) 100%);
+    
+    background: -moz-linear-gradient(90deg, hsla(217, 100%, 50%, 0.1) 0%, hsla(186, 100%, 69%, 0.6) 100%);
+    
+    background: -webkit-linear-gradient(90deg, hsla(217, 100%, 50%, 0.8) 0%, hsla(186, 100%, 69%, 0.1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
+    backdrop-filter: blur(10px);
+    padding: 1.2rem;
+    border-radius:10px;
+}
+
+.inputsection{
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(241, 240, 240,0.4);
+    height: 30px;
+
+}
+
+input{
+    text-transform: capitalize;
+    height: 100%;
+    margin: 10px 0px;
+    border: none;
+    font-size: 15px;
+    /* font-weight: bold; */
+    background-color: transparent;
+    padding-left: 10px;
+    outline: none;
+}
+.add{
+    border: none;
+    font-size: 13px;
+    background-color: black;
+    color: white;
+    height: 30px;
+    width: 60px;
+    border-radius: 15px;
+    font-weight: bolder;
+
+}
+
+.add:hover{
+    background-color: rgb(43, 42, 42);
+}
+
+.list{
+    margin-top: 35px;
+    margin-left: 20px;
+}
+
+.list li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 15px;
+    text-transform: capitalize;
+    list-style: none;
+    background-color: transparent;
+    position: relative;
+    /* Add a higher z-index to the li to ensure it's above the pseudo-element */
+    z-index: 1;
+    flex-wrap: wrap;
+}
+
+.list li::before {
+    content: "";
+    background-image: url(./images/circle-regular.svg);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: -28px; /* Adjust the position to place it on the left side */
+    transform: translateY(10%);
+    /* Lower the z-index of the pseudo-element so it appears behind the li */
+}
+.list li.checked{
+    text-decoration: line-through;
+    
+}
+.list li.checked::before{
+    background-image: url(./images/circle-solid.svg);
+}
+
+.list li span button{
+border: none;
+background-color: transparent;
+}
+.list li span button:hover{
+color: white;
+border: none;
+}
+
+
+
+

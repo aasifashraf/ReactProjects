@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1f4e40e592.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Noto+Sans:wght@300;400&family=Poppins:ital,wght@0,100;0,600;1,100;1,200&family=Yanone+Kaffeesatz:wght@300&display=swap');
+      </style>
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <div class="passwordSection">
+        <input type="text" class="showpass" value="" disabled>
+        <i class="fa-regular fa-copy"></i>
+        <i class="fa-solid fa-rotate-right"></i>    
+    </div>
+    <div class="rangesection">
+        <p class="heading">Customize your password</p>
+        <div class="sec1">
+            <div>
+            </div>
+            <div class="leftsection">
+                <input type="text" class="lengthinput">
+                <input type="range" class="range">
+            </div>
+        </div>
+        <div class="rightsection">
+           <div>
+            <label for="uppercase">UpperCase</label>
+            <input type="checkbox" id="uppercase">
+           </div>
+
+            <div>
+                <label for="lowercase">LowerCase</label>
+            <input type="checkbox" id="lowercase">
+            </div>
+            
+            <div>
+                <label for="number">Number</label>
+            <input type="checkbox" id="number">
+            </div>
+
+            <div>
+                <label for="symbol">Symbol</label>
+            <input type="checkbox" id="symbol">
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
