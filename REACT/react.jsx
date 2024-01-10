@@ -49,7 +49,15 @@ console.log(root);
 // within curly brackets {} we can use javascript  evevn we can call functioal component by invoking it like in javacript
 
 //there is 3 types of syntax to use another functional component in another functional component
-{/* you can call it*/} Functional1()
-{/* you can write variable in angular brackets*/} <Functional1/>
-{/* you can use it similar like html syntax*/} <Functional1> </Functional1>
-
+{
+  /* you can call it*/
+}
+Functional1();
+{
+  /* you can write variable in angular brackets*/
+}
+<Functional1 />;
+{
+  /* you can use it similar like html syntax*/
+}
+<Functional1> </Functional1>;
