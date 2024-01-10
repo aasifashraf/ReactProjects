@@ -1,0 +1,51 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+body > div {
+  width: 20rem;
+  height: min-content;
+  border: 1px solid black;
+  margin: 5px;
+  background-color: white;
+}
+
+.title {
+  padding: 0px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title p {
+  padding: 10px;
+}
+
+.answer {
+  display: none;
+  padding: 5px;
+  background-color: rgb(58, 163, 255);
+}
+
+span > i {
+  color: rgb(241, 0, 0);
+  cursor: pointer;
+}
+span > .fa-minus {
+  display: none;
+}
+span > .fa-plus {
+  display: block;
+}
+
+.show-answer {
+  display: block;
+}
