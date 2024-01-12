@@ -1,17 +1,19 @@
 // Layout.js
 import React from "react";
-import ReactDOM from "react-dom";
-import Header from "./components/Header";
+import ReactDOM from "react-dom/client";
+import Restaraunt from "./components/Restaraunt";
+import Cards from "./components/Cards";
 import Body from "./components/Body";
-import Cards from "./Cards";
+import Header from "./components/Header";
 
 let Layout = () => {
   return (
     <div className="layout">
       <Header />
-      <Body data={Cards} />
+      <Body />
     </div>
   );
 };
 
-ReactDOM.render(<Layout />, document.getElementById("root"));
+let Root = ReactDOM.createRoot(document.getElementById("root"));
+Root.render(<Layout />);

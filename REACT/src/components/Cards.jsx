@@ -1,4 +1,4 @@
-const Cards = [
+export const Cards = [
   {
     type: "restaurant",
     data: {
@@ -13,7 +13,7 @@ const Cards = [
       cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
       tags: [],
       costForTwo: 40000,
-      costForTwoString: "₹400 FOR TWO",
+      costForTwoString: "400 FOR TWO",
       deliveryTime: 36,
       minDeliveryTime: 36,
       maxDeliveryTime: 36,
@@ -1883,4 +1883,4 @@ const Cards = [
   },
 ];
 
-export default Cards;
+// export default Cards;
