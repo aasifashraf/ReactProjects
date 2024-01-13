@@ -1,4 +1,4 @@
-export const Cards = [
+const Cards = [
   {
     type: "restaurant",
     data: {
@@ -1883,4 +1883,4 @@ export const Cards = [
   },
 ];
 
-// export default Cards;
+export default Cards;

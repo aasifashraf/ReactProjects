@@ -1,4 +1,9 @@
+import { useState } from "react";
+import Body from "./Body";
+import CardsData from "./Cards";
+
 const Header = () => {
+
   return (
     <>
       <div className="navbar">
@@ -22,7 +27,7 @@ const Header = () => {
                 <a href="/contact">Contact us</a>
               </li>
               <li>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i className="fa-solid fa-cart-shopping"></i>
               </li>
             </ul>
           </nav>
