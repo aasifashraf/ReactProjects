@@ -3,7 +3,6 @@ import Body from "./Body";
 import CardsData from "./Cards";
 
 const Header = () => {
-
   return (
     <>
       <div className="navbar">
@@ -16,6 +15,7 @@ const Header = () => {
         </div>
         <div className="right">
           <nav className="nav">
+            <input type="text" className="search" placeholder="Search"/>
             <ul>
               <li>
                 <a href="/">Home</a>

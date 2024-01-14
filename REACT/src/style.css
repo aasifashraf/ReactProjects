@@ -10,11 +10,19 @@ body {
 }
 .body {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.restaurants {
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin: 0px 10rem;
 }
 
 .navbar {
+  position: sticky;
   height: 10vh;
   display: flex;
   justify-content: space-around;
@@ -35,7 +43,19 @@ body {
   transition: ease-in-out;
   transform: rotate(90deg);
 }
-
+.nav {
+  display: flex;
+  align-items: center;
+}
+.search {
+  background-color: rgb(248, 248, 246);
+  border-radius: 15px;
+  border: 0px;
+  width: 20vw;
+  height: 4vh;
+  padding: 5px 10px;
+  outline: none;
+}
 .right > nav > ul {
   display: flex;
   justify-content: space-between;
@@ -67,9 +87,13 @@ body {
   border-radius: 5px;
   background-color: transparent;
   cursor: pointer;
+  margin: 0px 1rem;
+  width: 5vw;
+  border: 1px solid rgba(22, 16, 16,0.1);
 }
 
 /* body css */
+
 .image > img {
   margin-bottom: 1rem;
   width: 14.2vw;

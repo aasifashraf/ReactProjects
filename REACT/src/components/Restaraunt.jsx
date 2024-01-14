@@ -29,7 +29,7 @@ let Restaraunt = (props) => {
           <p>{data.data.cuisines.join(", ")}</p>
         </div>
         <div className="amount">
-          <p>{"₹" + data.data.costForTwo / 100 + " FOR TWO"}</p>
+          <p>{"₹" + data.data.costForTwo / 100 }</p>
         </div>
       </div>
     </div>
