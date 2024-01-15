@@ -3,7 +3,7 @@ import react from "../react";
 
 let Restaraunt = (props) => {
   let { data } = props;
-  console.log(data);
+  // console.log(data.data);
   // const { data } = props;
   const { cloudinaryImageId, name, avgRating, deliveryTime, cuisines } =
     data?.data;
@@ -19,7 +19,7 @@ let Restaraunt = (props) => {
         />
       </div>
       <div className="rest">
-        {console.log(name)}
+        {/* {console.log(name)} */}
         <h4 className="name">{name}</h4>
         <div className="startime">
           <p className="star">{avgRating}</p>
@@ -29,7 +29,7 @@ let Restaraunt = (props) => {
           <p>{data.data.cuisines.join(", ")}</p>
         </div>
         <div className="amount">
-          <p>{"₹" + data.data.costForTwo / 100 }</p>
+          <p>{"₹" + data.data.costForTwo / 100}</p>
         </div>
       </div>
     </div>
