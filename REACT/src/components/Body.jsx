@@ -3,23 +3,25 @@ import Restaraunt from "./Restaraunt";
 import Cardsarr from "./Cards";
 
 let Body = () => {
-  const [filteredcard, setfilteredcards] = useState(Cardsarr);
+  const [filteredcard, setfilteredcards] = useState([]);
 
-  // useEffect(() => {
-  //   fetchapi();
-  // }, []);
+  useEffect(() => {
+    fetchapi();
+  }, []);
 
-  // let fetchapi = async () => {
-  //   let apilink = await fetch(
-  //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.756728&lng=76.638159&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-  //   );
-  //   let jsondata = await apilink.json();
-  //   console.log(jsondata);
-  //   setfilteredcards(
-  //     jsondata.data.cards[3].card.card.gridElements.infoWithStyle.restaurants[0]
-  //       .info
-  //   );
-  // };
+  let fetchapi = async () => {
+    let apilink = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.756728&lng=76.638159&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    let jsondata = await apilink.json();
+    console.log(jsondata);
+    setfilteredcards(
+      jsondata.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants ||
+        jsondata.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+    );
+  };
 
   return (
     <>
@@ -27,44 +29,44 @@ let Body = () => {
         <div className="toprated">
           <button
             onClick={() => {
-              let filterdata = Cardsarr.filter(
-                (data) => data.data.avgRating >= 0
+              let filterdata = filteredcard?.filter(
+                (data) => data.info.avgRating >= 0
               );
-              setfilteredcards((prevFilteredCards) => [...filterdata]);
+              setfilteredcards((prevFilteredCards) => filterdata || []);
             }}>
             All
           </button>
           <button
             onClick={() => {
-              let filterdata = Cardsarr.filter(
-                (data) => data.data.avgRating > 4
+              let filterdata = filteredcard?.filter(
+                (data) => data.info.avgRating > 4
               );
-              setfilteredcards((prevFilteredCards) => [...filterdata]);
+              setfilteredcards((prevFilteredCards) => filterdata || []);
             }}>
             Top Rated
           </button>
           <button
             onClick={() => {
-              let filterdata = Cardsarr.filter((data) =>
-                data.data.cuisines.includes("Biryani")
+              let filterdata = filteredcard?.filter((data) =>
+                data.info.cuisines.includes("Biryani")
               );
-              setfilteredcards((prevFilteredCards) => [...filterdata]);
+              setfilteredcards((prevFilteredCards) => filterdata || []);
             }}>
             Biryani
           </button>
           <button
             onClick={() => {
-              let filterdata = Cardsarr.filter(
-                (data) => parseInt(data.data.costForTwo) < 251 * 100
+              let filterdata = filteredcard?.filter(
+                (data) => parseInt(data.info.costForTwo) < 251 * 100
               );
-              setfilteredcards((prevFilteredCards) => [...filterdata]);
+              setfilteredcards((prevFilteredCards) => filterdata || []);
             }}>
             Below 251
           </button>
         </div>
         <div className="restaurants">
-          {filteredcard.map((card) => (
-            <Restaraunt key={card.data.id} data={card} />
+          {filteredcard?.map((card) => (
+            <Restaraunt key={card.info.id} data={card} />
           ))}
         </div>
       </div>
