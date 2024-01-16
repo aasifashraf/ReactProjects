@@ -3,6 +3,8 @@ import Body from "./Body";
 import CardsData from "./Cards";
 
 const Header = () => {
+  // let btnlogin = "Login";
+  const [loginbtn, setloginbtn] = useState("Login");
   return (
     <>
       <div className="navbar">
@@ -15,7 +17,7 @@ const Header = () => {
         </div>
         <div className="right">
           <nav className="nav">
-            <input type="text" className="search" placeholder="Search"/>
+            <input type="text" className="search" placeholder="Search" />
             <ul>
               <li>
                 <a href="/">Home</a>
@@ -31,6 +33,14 @@ const Header = () => {
               </li>
             </ul>
           </nav>
+          <button
+            onClick={() => {
+              loginbtn === "Login"
+                ? setloginbtn("Logout")
+                : setloginbtn("Login");
+            }}>
+            {loginbtn}
+          </button>
         </div>
       </div>
     </>

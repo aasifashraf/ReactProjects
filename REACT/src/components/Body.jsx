@@ -3,20 +3,23 @@ import Restaraunt from "./Restaraunt";
 import Cardsarr from "./Cards";
 
 let Body = () => {
-  const [filteredcard, setfilteredcards] = useState([]);
+  const [filteredcard, setfilteredcards] = useState(Cardsarr);
 
-  useEffect(() => {
-    fetchapi();
-  }, []);
+  // useEffect(() => {
+  //   fetchapi();
+  // }, []);
 
-  let fetchapi = async () => {
-    let apilink = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.756728&lng=76.638159&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    let jsondata = await apilink.json();
-    console.log(jsondata);
-    setfilteredcards(jsondata?.data?.cards);
-  };
+  // let fetchapi = async () => {
+  //   let apilink = await fetch(
+  //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.756728&lng=76.638159&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  //   );
+  //   let jsondata = await apilink.json();
+  //   console.log(jsondata);
+  //   setfilteredcards(
+  //     jsondata.data.cards[3].card.card.gridElements.infoWithStyle.restaurants[0]
+  //       .info
+  //   );
+  // };
 
   return (
     <>
@@ -61,7 +64,7 @@ let Body = () => {
         </div>
         <div className="restaurants">
           {filteredcard.map((card) => (
-            <Restaraunt /*key={card.data.id}*/ data={card} />
+            <Restaraunt key={card.data.id} data={card} />
           ))}
         </div>
       </div>
