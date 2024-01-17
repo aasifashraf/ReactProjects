@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Restaraunt from "./Restaraunt";
 import Cardsarr from "./Cards";
+import Header from "./Header";
 
 let Body = () => {
   const [filteredcard, setfilteredcards] = useState([]);
+  const [tempcard, settempcard] = useState([]);
 
   useEffect(() => {
     fetchapi();
@@ -21,6 +23,12 @@ let Body = () => {
         jsondata.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
     );
+    settempcard(
+      jsondata.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants ||
+        jsondata.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+    );
   };
 
   return (
@@ -32,7 +40,7 @@ let Body = () => {
               let filterdata = filteredcard?.filter(
                 (data) => data.info.avgRating >= 0
               );
-              setfilteredcards((prevFilteredCards) => filterdata || []);
+              settempcard((prevFilteredCards) => filterdata || []);
             }}>
             All
           </button>
@@ -41,7 +49,7 @@ let Body = () => {
               let filterdata = filteredcard?.filter(
                 (data) => data.info.avgRating > 4
               );
-              setfilteredcards((prevFilteredCards) => filterdata || []);
+              settempcard((prevFilteredCards) => filterdata || []);
             }}>
             Top Rated
           </button>
@@ -50,7 +58,7 @@ let Body = () => {
               let filterdata = filteredcard?.filter((data) =>
                 data.info.cuisines.includes("Biryani")
               );
-              setfilteredcards((prevFilteredCards) => filterdata || []);
+              settempcard((prevFilteredCards) => filterdata || []);
             }}>
             Biryani
           </button>
@@ -59,13 +67,13 @@ let Body = () => {
               let filterdata = filteredcard?.filter(
                 (data) => parseInt(data.info.costForTwo) < 251 * 100
               );
-              setfilteredcards((prevFilteredCards) => filterdata || []);
+              settempcard((prevFilteredCards) => filterdata || []);
             }}>
             Below 251
           </button>
         </div>
         <div className="restaurants">
-          {filteredcard?.map((card) => (
+          {tempcard?.map((card) => (
             <Restaraunt key={card.info.id} data={card} />
           ))}
         </div>

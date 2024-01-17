@@ -17,7 +17,15 @@ const Header = () => {
         </div>
         <div className="right">
           <nav className="nav">
-            <input type="text" className="search" placeholder="Search" />
+            <input
+              type="text"
+              className="search"
+              placeholder="Search"
+              value=""
+              onChange={(e) => {
+                console.log(e.target.value);
+              }}
+            />
             <ul>
               <li>
                 <a href="/">Home</a>
