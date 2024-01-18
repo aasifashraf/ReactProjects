@@ -14,11 +14,12 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.restaurants {
+.restaurants,
+.shimmer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0px 10rem;
+  margin: 0px 6rem;
 }
 
 .navbar {
@@ -107,13 +108,15 @@ body {
   border-radius: 5px 5px 0px 0px;
 }
 
-.card {
+.card,
+.shimmer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.card {
+.card,
+.shimmer {
   /* border: 1px solid black; */
   width: 15vw;
   padding: 5px;
@@ -135,4 +138,53 @@ body {
 .amount {
   margin: 1rem auto;
   font: bolder;
+}
+
+/* shimmerUI -------------------------------------------------------------*/
+.shimmer > .image {
+  margin-bottom: 1rem;
+  width: 14.2vw;
+  height: 20vh;
+  background-color: rgb(180, 180, 180);
+  border-radius: 5px 5px 0px 0px;
+}
+
+.shimmer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 45vh;
+}
+
+.shimmer {
+  background-color: rgb(204, 204, 204);
+}
+.shimmer > :hover {
+  transform: translateY(-5px);
+}
+
+.shimmer > .flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shimmer > div {
+  margin-bottom: 1rem;
+  width: 5vw;
+  height: 2vh;
+  background-color: rgb(180, 180, 180);
+  border-radius: 5px 5px 0px 0px;
+}
+.shimmer > .rest {
+  margin-bottom: 1rem;
+  width: 9vw;
+  height: 2vh;
+  background-color: rgb(180, 180, 180);
+  border-radius: 5px 5px 0px 0px;
+}
+.empty {
+  margin: 3.5rem 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Body from "./Body";
-import CardsData from "./Cards";
+import CardsData from "../constant/Cards";
 
 const Header = () => {
   // let btnlogin = "Login";

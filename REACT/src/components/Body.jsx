@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Restaraunt from "./Restaraunt";
-import Cardsarr from "./Cards";
+import Restaraunt from "../constant/Restaraunt";
+import Cardsarr from "../constant/Cards";
 import Header from "./Header";
+import ShimmerUI from "../constant/shimmerUI";
 
 let Body = () => {
   const [filteredcard, setfilteredcards] = useState([]);
@@ -30,7 +31,9 @@ let Body = () => {
           ?.restaurants
     );
   };
-
+  if (filteredcard.length === 0) {
+    return <ShimmerUI />;
+  }
   return (
     <>
       <div className="body">
