@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Restaraunt from "../constant/Restaraunt";
-import Cardsarr from "../constant/Cards";
-import Header from "./Header";
 import ShimmerUI from "../constant/shimmerUI";
 
 let Body = () => {
@@ -17,7 +15,7 @@ let Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.756728&lng=76.638159&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     let jsondata = await apilink.json();
-    console.log(jsondata);
+    // console.log(jsondata);
     setfilteredcards(
       jsondata.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants ||
@@ -31,7 +29,7 @@ let Body = () => {
           ?.restaurants
     );
   };
-  if (filteredcard.length === 0) {
+  if (filteredcard.length === 0 || null || undefined) {
     return <ShimmerUI />;
   }
   return (

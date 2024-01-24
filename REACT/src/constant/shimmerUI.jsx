@@ -1,6 +1,6 @@
 const ShimmerUI = () => {
   return (
-    <div class="empty">
+    <div className="empty">
       <div className="shimmer">
         <div className="image"></div>
         <div class="flex">

@@ -1,10 +1,9 @@
 import { useState } from "react";
-import Body from "./Body";
-import CardsData from "../constant/Cards";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   // let btnlogin = "Login";
   const [loginbtn, setloginbtn] = useState("Login");
+  const [search, setsearch] = useState([]);
   return (
     <>
       <div className="navbar">
@@ -21,20 +20,20 @@ const Header = () => {
               type="text"
               className="search"
               placeholder="Search"
-              value=""
+              value={search}
               onChange={(e) => {
-                console.log(e.target.value);
+                setsearch(e.target.value);
               }}
             />
             <ul>
               <li>
-                <a href="/">Home</a>
+                <Link to="./">HOME</Link>
               </li>
               <li>
-                <a href="/profile">Profile</a>
+                <Link to="./ContactUs">Contact Us</Link>
               </li>
               <li>
-                <a href="/contact">Contact us</a>
+                <Link to="./About">About</Link>
               </li>
               <li>
                 <i className="fa-solid fa-cart-shopping"></i>

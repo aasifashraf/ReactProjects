@@ -1,5 +1,4 @@
-import Cards from "./Cards";
-import react from "../react";
+
 
 let Restaraunt = (props) => {
   let { data } = props;
