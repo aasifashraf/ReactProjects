@@ -1,26 +1,36 @@
 import { useEffect, useState } from "react";
 import ShimmerUI from "../constant/shimmerUI";
+import { menuinfoapilink } from "../constant/URL.JSX";
+import { useParams } from "react-router-dom";
 
 const InfoMenu = () => {
   const [Apicall, setApicall] = useState(null);
   const [offers, setoffers] = useState(null);
+  const [otheroffers, setotheroffers] = useState(null);
+
+  const { resId } = useParams();
+  console.log(useParams());
 
   useEffect(() => {
     infoApi();
   }, []);
   const infoApi = async () => {
-    const infofetch = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=235"
-    );
+    const infofetch = await fetch(menuinfoapilink + resId);
     const infoJson = await infofetch.json();
-    // console.log(infoJson.data);
+    console.log(infoJson.data);
     setApicall(infoJson.data);
     setoffers(
-      infoJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers
+      infoJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.offers || {}
     );
-    console.log(
-      infoJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers
+    setotheroffers(
+      infoJson?.data?.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card
+        .card.itemCards || {}
     );
+    //   console.log(
+    //     infoJson?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]
+    //       ?.card?.card
+    //   );
   };
   if (Apicall == null) return <ShimmerUI />;
   const {
@@ -33,12 +43,6 @@ const InfoMenu = () => {
     sla,
     totalRatingsString,
   } = Apicall?.cards[0]?.card?.card?.info;
-
-  offers.map((offercards) => {
-    offercards = { data };
-  });
-  console.log(data?.info?.header);
-  const { header, couponCode, description } = data?.info;
 
   return (
     <div className="topdiv">
@@ -58,7 +62,7 @@ const InfoMenu = () => {
           </div>
           <div className="rating">
             <div className="ratingdiv">
-              <i class="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
               <p className="ratingnbr">{avgRating}</p>
             </div>
             <p>{totalRatingsString}</p>
@@ -70,21 +74,39 @@ const InfoMenu = () => {
         <div className="timecost">
           <div className="time">
             <i className="fa-solid fa-clock"></i>
-            <p>{sla.deliveryTime}</p>
+            <p>{" " + sla.deliveryTime + " Mins"}</p>
           </div>
           <div className="cost">
             <i className="fa-solid fa-indian-rupee-sign"></i>
             <p>{costForTwo / 100}</p>
           </div>
         </div>
-        <div className="offers">
-          <div className="offersec">
-            <p>{header}</p>
-          </div>
-          <div className="offersecbtm">
-            <p>{couponCode}</p>
-            <p>{description}</p>
-          </div>
+        <div className="alloffers">
+          {offers.map((offercards) => (
+            <div className="offers">
+              <div className="offersec">
+                <p>{offercards.info?.header}</p>
+              </div>
+              <div className="offersecbtm">
+                <p>{offercards.info?.couponCode}</p>
+                <p>{offercards.info?.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="otheroffers">
+          {otheroffers?.map((offers) => (
+            <div className="banner" key={offers?.card?.info?.id}>
+              <p>{offers?.card?.info?.name}</p>
+              <p>
+                {"₹ " +
+                  (offers.card?.info?.defaultPrice
+                    ? offers.card?.info?.defaultPrice / 100
+                    : offers.card?.info?.price / 100)}
+              </p>
+              {/* {console.log(offers?.card?.info)} */}
+            </div>
+          ))}
         </div>
       </div>
     </div>

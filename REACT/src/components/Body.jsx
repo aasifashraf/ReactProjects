@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Restaraunt from "../constant/Restaraunt";
 import ShimmerUI from "../constant/shimmerUI";
+import { Link } from "react-router-dom";
+import { swiggyURL } from "../constant/URL.JSX";
 
 let Body = () => {
   const [filteredcard, setfilteredcards] = useState([]);
@@ -11,9 +13,7 @@ let Body = () => {
   }, []);
 
   let fetchapi = async () => {
-    let apilink = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.756728&lng=76.638159&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    let apilink = await fetch(swiggyURL);
     let jsondata = await apilink.json();
     // console.log(jsondata);
     setfilteredcards(
@@ -75,7 +75,9 @@ let Body = () => {
         </div>
         <div className="restaurants">
           {tempcard?.map((card) => (
-            <Restaraunt key={card.info.id} data={card} />
+            <Link key={card.info.id} to={"/restaurant/" + card.info.id}>
+              <Restaraunt data={card} />
+            </Link>
           ))}
         </div>
       </div>

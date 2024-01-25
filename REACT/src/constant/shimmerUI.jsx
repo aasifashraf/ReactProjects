@@ -3,7 +3,7 @@ const ShimmerUI = () => {
     <div className="empty">
       <div className="shimmer">
         <div className="image"></div>
-        <div class="flex">
+        <div className="flex">
           <div className="rest"></div>
           <div className="rest"></div>
         </div>
@@ -12,7 +12,7 @@ const ShimmerUI = () => {
       </div>
       <div className="shimmer">
         <div className="image"></div>
-        <div class="flex">
+        <div className="flex">
           <div className="rest"></div>
           <div className="rest"></div>
         </div>
@@ -21,7 +21,7 @@ const ShimmerUI = () => {
       </div>
       <div className="shimmer">
         <div className="image"></div>
-        <div class="flex">
+        <div className="flex">
           <div className="rest"></div>
           <div className="rest"></div>
         </div>
@@ -30,7 +30,7 @@ const ShimmerUI = () => {
       </div>
       <div className="shimmer">
         <div className="image"></div>
-        <div class="flex">
+        <div className="flex">
           <div className="rest"></div>
           <div className="rest"></div>
         </div>
@@ -39,7 +39,7 @@ const ShimmerUI = () => {
       </div>
       <div className="shimmer">
         <div className="image"></div>
-        <div class="flex">
+        <div className="flex">
           <div className="rest"></div>
           <div className="rest"></div>
         </div>
@@ -48,7 +48,7 @@ const ShimmerUI = () => {
       </div>
       <div className="shimmer">
         <div className="image"></div>
-        <div class="flex">
+        <div className="flex">
           <div className="rest"></div>
           <div className="rest"></div>
         </div>
@@ -57,7 +57,7 @@ const ShimmerUI = () => {
       </div>
       <div className="shimmer">
         <div className="image"></div>
-        <div class="flex">
+        <div className="flex">
           <div className="rest"></div>
           <div className="rest"></div>
         </div>
@@ -66,7 +66,7 @@ const ShimmerUI = () => {
       </div>
       <div className="shimmer">
         <div className="image"></div>
-        <div class="flex">
+        <div className="flex">
           <div className="rest"></div>
           <div className="rest"></div>
         </div>
