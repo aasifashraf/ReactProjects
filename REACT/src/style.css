@@ -210,21 +210,35 @@ h4 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  top: -2rem;
+}
+.about > h1,
+.contactus > h1 {
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+}
+.about > .children {
+  display: flex;
+  flex-wrap: wrap;
+}
+.about > .children > div {
+  margin-right: 3rem;
 }
 
-.error > div,
-.contactus > div {
+.error > div {
   display: flex;
   justify-content: start;
   align-items: center;
 }
 
-.contactus > h1 {
-  margin-bottom: 1rem;
+.contactus > div > div {
+  display: flex;
+  align-items: center;
 }
 
-.contactus > div > i,
-.contactus > div > p {
+.contactus > div > div > i,
+.contactus > div > div > p {
   margin-bottom: 0.5rem;
   margin-right: 1rem;
 }

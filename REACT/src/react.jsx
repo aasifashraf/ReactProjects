@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
-import About from "./components/about";
+import About from "./components/About";
 import ContactUs from "./components/contactus";
 import ErrorElement from "./components/ErrorElement";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -25,7 +25,7 @@ const approuter = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Body /> },
-      { path: "/about", element: <About /> },
+      { path: "/About", element: <About /> },
       { path: "/contactus", element: <ContactUs /> },
       { path: "/restaurant/:resId", element: <InfoMenu /> },
     ],
