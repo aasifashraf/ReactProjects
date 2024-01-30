@@ -225,6 +225,14 @@ h4 {
 .about > .children > div {
   margin-right: 3rem;
 }
+.about > .children > div > div {
+  display: flex;
+  align-items: center;
+}
+.about > .children > div > div > i {
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
 
 .error > div {
   display: flex;
@@ -361,4 +369,18 @@ h4 {
   margin: 2rem 0rem;
   border-bottom: 1px dashed rgba(68, 67, 67, 0.2);
   padding-bottom: 0.3rem;
+}
+
+.onlinestatus {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.onlinestatus > .fa-solid {
+  /* font-weight: 900; */
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }

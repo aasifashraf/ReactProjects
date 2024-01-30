@@ -23,7 +23,7 @@ class About extends React.Component {
     this.state = {
       GitUserapi: {
         html_url: "GitHub URL string",
-        user: "username",
+        login: "username",
         name: "Name",
       },
     };
@@ -45,9 +45,18 @@ class About extends React.Component {
         {/* <DevInfoFn /> */}
         <div className="children">
           <div className="main">
-            <h3>{"GitHub Name: " + name}</h3>
-            <p>{"GitHub UserName: " + login}</p>
-            <p>{"GitHub URL: " + html_url}</p>
+            <div className="profile">
+              <i className="fa-solid fa-user"></i>
+              <h3>{name}</h3>
+            </div>
+            <div className="gitusername">
+              <i className="fa-brands fa-github"></i>
+              <p>{login}</p>
+            </div>
+            <div className="giturl">
+              <i className="fa-solid fa-code-branch"></i>
+              <p>{html_url}</p>
+            </div>
           </div>
 
           {/* <DevInfoClass
@@ -55,11 +64,11 @@ class About extends React.Component {
             job={"Web Dev"}
             address={"Zero floor Srinagar Jammu and Kashmir ,190001"}
           /> */}
-          <DevInfoClass
+          {/* <DevInfoClass
             name={"Elon Musk"}
             job={"CEO"}
             address={"Zero floor Chicago United States ,100101"}
-          />
+          /> */}
         </div>
       </div>
     );

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { logoURL } from "../constant/URL.JSX";
+
 const Header = () => {
   // let btnlogin = "Login";
   const [loginbtn, setloginbtn] = useState("Login");
@@ -8,11 +10,7 @@ const Header = () => {
     <>
       <div className="navbar">
         <div className="logo">
-          <img
-            className="logoimage"
-            src="https://cdn.dribbble.com/userupload/10283598/file/original-cf13bf74e14ee4b960c155b5cf4844e3.png"
-            alt="Logo"
-          />
+          <img className="logoimage" src={logoURL} alt="Logo" />
         </div>
         <div className="right">
           <nav className="nav">

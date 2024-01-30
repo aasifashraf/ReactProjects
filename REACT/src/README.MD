@@ -24,3 +24,7 @@
 
 // URL FOR DIAGRAM https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
+---
+
+// here i used lazy loading or onloading demand or dynamic loading or dynamic import or chunkking or code splitting
+// because reduces loading time it loads only when it called or clicked

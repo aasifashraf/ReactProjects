@@ -1,4 +1,4 @@
-
+import { restaurantImgURL } from "../constant/URL.JSX";
 
 let Restaraunt = (props) => {
   let { data } = props;
@@ -7,13 +7,7 @@ let Restaraunt = (props) => {
   return (
     <div className="card">
       <div className="image">
-        <img
-          src={
-            "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-            cloudinaryImageId
-          }
-          alt=""
-        />
+        <img src={restaurantImgURL + cloudinaryImageId} alt="" />
       </div>
       <div className="rest">
         {/* {console.log(name)} */}

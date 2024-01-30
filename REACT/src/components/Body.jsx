@@ -3,6 +3,7 @@ import Restaraunt from "../constant/Restaraunt";
 import ShimmerUI from "../constant/shimmerUI";
 import { Link } from "react-router-dom";
 import { swiggyURL } from "../constant/URL.JSX";
+import useOnlineStatus from "../constant/useOnllineStatus";
 
 let Body = () => {
   const [filteredcard, setfilteredcards] = useState([]);
@@ -13,26 +14,45 @@ let Body = () => {
   }, []);
 
   let fetchapi = async () => {
-    let apilink = await fetch(swiggyURL);
-    let jsondata = await apilink.json();
-    // console.log(jsondata);
-    setfilteredcards(
-      jsondata.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants ||
-        jsondata.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-    );
-    settempcard(
-      jsondata.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants ||
-        jsondata.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-    );
+    try {
+      let apilink = await fetch(swiggyURL);
+      let jsondata = await apilink.json();
+      // console.log(jsondata);
+      setfilteredcards(
+        jsondata.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants ||
+          jsondata.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+      );
+      settempcard(
+        jsondata.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants ||
+          jsondata.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+      );
+    } catch (error) {
+      console.log("api didnot work", error);
+    }
   };
-  if (filteredcard.length === 0 || null || undefined) {
-    return <ShimmerUI />;
+
+  const onlineStatus = useOnlineStatus();
+
+  if (!onlineStatus) {
+    console.log(!onlineStatus);
+    return (
+      <div className="onlinestatus">
+        <i className="fa-solid fa-wifi"></i>
+        <p>Please check your internet connection</p>
+      </div>
+    );
   }
-  return (
+  // if (filteredcard.length === 0 || null || undefined) {
+  //   return <ShimmerUI />;
+  // }
+
+  return filteredcard.length === 0 || null || undefined ? (
+    <ShimmerUI />
+  ) : (
     <>
       <div className="body">
         <div className="toprated">

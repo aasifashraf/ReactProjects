@@ -1,5 +1,5 @@
 // Layout.js
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
@@ -8,7 +8,13 @@ import ContactUs from "./components/contactus";
 import ErrorElement from "./components/ErrorElement";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import InfoMenu from "./components/menuinfo";
+import ShimmerUI from "./constant/shimmerUI";
+// import InfoMenu from "./components/menuinfo";
+
+
+// here i used lazy loading or onloading demand or dynamic loading or dynamic import or chunkking or code splitting 
+// because reduces loading time it loads only when it called or clicked 
+const InfoMenu = lazy(() => import("./components/menuinfo"));
 
 let Layout = () => {
   return (
@@ -27,7 +33,14 @@ const approuter = createBrowserRouter([
       { path: "/", element: <Body /> },
       { path: "/About", element: <About /> },
       { path: "/contactus", element: <ContactUs /> },
-      { path: "/restaurant/:resId", element: <InfoMenu /> },
+      {
+        path: "/restaurant/:resId",
+        element: (
+          <Suspense fallback={<ShimmerUI />}>
+            <InfoMenu />
+          </Suspense>
+        ),
+      },
     ],
     errorElement: <ErrorElement />,
   },
