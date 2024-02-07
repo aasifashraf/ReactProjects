@@ -1,5 +1,5 @@
 // Layout.js
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
@@ -10,18 +10,24 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import ShimmerUI from "./constant/shimmerUI";
 // import InfoMenu from "./components/menuinfo";
+import userContext from "./constant/userContext";
+import { useContext } from "react";
 
-
-// here i used lazy loading or onloading demand or dynamic loading or dynamic import or chunkking or code splitting 
-// because reduces loading time it loads only when it called or clicked 
+// here i used lazy loading or onloading demand or dynamic loading or dynamic import or chunkking or code splitting
+// because reduces loading time it loads only when it called or clicked
 const InfoMenu = lazy(() => import("./components/menuinfo"));
 
 let Layout = () => {
+  const data = useContext(userContext);
+  const { username, id } = data;
+
   return (
-    <div className="layout">
-      <Header />
-      <Outlet />
-    </div>
+    <userContext.Provider value={{ username, id }}>
+      <div className="layout">
+        <Header />
+        <Outlet />
+      </div>
+    </userContext.Provider>
   );
 };
 

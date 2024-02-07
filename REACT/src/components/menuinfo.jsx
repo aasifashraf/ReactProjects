@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import ShimmerUI from "../constant/shimmerUI";
 import { menuinfoapilink } from "../constant/URL.JSX";
 import { useParams } from "react-router-dom";
-
+import Restaurantcategory from "./Restaurantcategory";
 const InfoMenu = () => {
   const [Apicall, setApicall] = useState(null);
   const [offers, setoffers] = useState(null);
-  const [otheroffers, setotheroffers] = useState(null);
+  const [offerSec, setofferSec] = useState(null);
+
+  const [showindex, setshowindex] = useState(null);
 
   const { resId } = useParams();
-  console.log(useParams());
+  // console.log(useParams());
 
   useEffect(() => {
     infoApi();
@@ -17,21 +19,31 @@ const InfoMenu = () => {
   const infoApi = async () => {
     const infofetch = await fetch(menuinfoapilink + resId);
     const infoJson = await infofetch.json();
-    console.log(infoJson.data);
-    setApicall(infoJson.data);
+    // console.log(
+    //   infoJson?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+    // );
+    setApicall(infoJson?.data);
     setoffers(
       infoJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.offers || {}
     );
-    setotheroffers(
-      infoJson?.data?.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card
-        .card.itemCards || {}
+    setofferSec(
+      infoJson?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
     );
-    //   console.log(
-    //     infoJson?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]
-    //       ?.card?.card
-    //   );
+    // setotheroffers(
+    //   infoJson?.data?.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card
+    //     .card.itemCards || {}
+    // );
+    // console.log(infoJson?.data);
   };
+
+  let category = offerSec?.filter((data) => {
+    return (
+      data?.card?.card["@type"] ==
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  });
+  // console.log(category);
   if (Apicall == null) return <ShimmerUI />;
   const {
     name,
@@ -81,20 +93,35 @@ const InfoMenu = () => {
             <p>{costForTwo / 100}</p>
           </div>
         </div>
-        <div className="alloffers">
+        <div className="alloffers scroll-m-11">
           {offers.map((offercards) => (
+            // console.log(offercards),
             <div className="offers">
               <div className="offersec">
-                <p>{offercards.info?.header}</p>
+                <p>{offercards?.info?.header}</p>
               </div>
-              <div className="offersecbtm">
+              <div className="offersecbtm text-gray-400">
                 <p>{offercards.info?.couponCode}</p>
                 <p>{offercards.info?.description}</p>
               </div>
             </div>
           ))}
         </div>
-        <div className="otheroffers">
+        <div className="offersec">
+          {/* {console.log(category)} */}
+
+          {category?.map((category, index) => {
+            return (
+              <Restaurantcategory
+                key={category?.card?.card?.title}
+                category={category}
+                showitems={index == showindex ? true : false}
+                setshowindex={() => setshowindex(index)}
+              />
+            );
+          })}
+        </div>
+        {/* <div className="otheroffers">
           {otheroffers?.map((offers) => (
             <div className="banner" key={offers?.card?.info?.id}>
               <p>{offers?.card?.info?.name}</p>
@@ -105,9 +132,9 @@ const InfoMenu = () => {
                     : offers.card?.info?.price / 100)}
               </p>
               {/* {console.log(offers?.card?.info)} */}
-            </div>
-          ))}
-        </div>
+        {/* </div> */}
+        {/* ))} */}
+        {/* </div> */}
       </div>
     </div>
   );

@@ -41,7 +41,7 @@ class About extends React.Component {
     const { html_url, login, name } = this.state.GitUserapi;
     return (
       <div className="about">
-        <h1> About</h1>
+        <h1 className="font-bold text-[2rem]"> About</h1>
         {/* <DevInfoFn /> */}
         <div className="children">
           <div className="main">

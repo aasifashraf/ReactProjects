@@ -30,6 +30,7 @@ let Body = () => {
           jsondata.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants
       );
+      console.log(jsondata);
     } catch (error) {
       console.log("api didnot work", error);
     }
@@ -57,6 +58,7 @@ let Body = () => {
       <div className="body">
         <div className="toprated">
           <button
+            className="w-8 bg-black"
             onClick={() => {
               let filterdata = filteredcard?.filter(
                 (data) => data.info.avgRating >= 0
