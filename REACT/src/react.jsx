@@ -1,5 +1,5 @@
 // Layout.js
-import React, { lazy, Suspense, useContext, useState } from "react";
+import React, { lazy, Suspense, useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
@@ -18,13 +18,27 @@ import { useContext } from "react";
 const InfoMenu = lazy(() => import("./components/menuinfo"));
 
 let Layout = () => {
-  const data = useContext(userContext);
-  const { username, id } = data;
+  // const data = useContext(userContext);
+  // const { username, id } = data;
 
+  const [diffUser, setdiffUser] = useState({});
+  const { username2, id2 } = diffUser;
+
+  useEffect(() => {
+    const diffUser = {
+      username2: "aasif2",
+      id2: "12345",
+    };
+    setdiffUser(diffUser);
+  }, []);
+  //over writting orginal value usecontext usename value
   return (
-    <userContext.Provider value={{ username, id }}>
+    <userContext.Provider value={{ username: username2 }}>
       <div className="layout">
-        <Header />
+        {/* //over writting orginal value usecontext usename value */}
+        <userContext.Provider value={{ username: "username2" }}>
+          <Header />
+        </userContext.Provider>
         <Outlet />
       </div>
     </userContext.Provider>
