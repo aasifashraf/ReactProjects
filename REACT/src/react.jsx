@@ -22,21 +22,24 @@ let Layout = () => {
   // const { username, id } = data;
 
   const [diffUser, setdiffUser] = useState({});
+  const [search, setsearch] = useState("");
   const { username2, id2 } = diffUser;
 
   useEffect(() => {
     const diffUser = {
       username2: "aasif2",
       id2: "12345",
+      search: "",
     };
     setdiffUser(diffUser);
   }, []);
   //over writting orginal value usecontext usename value
   return (
-    <userContext.Provider value={{ username: username2 }}>
+    <userContext.Provider value={{ username: username2, search }}>
       <div className="layout">
         {/* //over writting orginal value usecontext usename value */}
-        <userContext.Provider value={{ username: "username2" }}>
+        <userContext.Provider
+          value={{ username: "username2", search, setsearch }}>
           <Header />
         </userContext.Provider>
         <Outlet />

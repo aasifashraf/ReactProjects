@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Restaraunt from "../constant/Restaraunt";
 import ShimmerUI from "../constant/shimmerUI";
 import { Link } from "react-router-dom";
 import { swiggyURL } from "../constant/URL.JSX";
 import useOnlineStatus from "../constant/useOnllineStatus";
+import userContext from "../constant/userContext";
 
 let Body = () => {
   const [filteredcard, setfilteredcards] = useState([]);
   const [tempcard, settempcard] = useState([]);
+  const { search } = useContext(userContext);
 
+  console.log(search);
   useEffect(() => {
     fetchapi();
   }, []);
@@ -30,7 +33,7 @@ let Body = () => {
           jsondata.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants
       );
-      console.log(jsondata);
+      // console.log(jsondata);
     } catch (error) {
       console.log("api didnot work", error);
     }
@@ -50,6 +53,10 @@ let Body = () => {
   // if (filteredcard.length === 0 || null || undefined) {
   //   return <ShimmerUI />;
   // }
+  // let filterdata = filteredcard?.filter((data) =>
+  //   data.info.cuisines.includes(search)
+  // );
+  // settempcard(filterdata || []);
 
   return filteredcard.length === 0 || null || undefined ? (
     <ShimmerUI />
@@ -58,7 +65,7 @@ let Body = () => {
       <div className="body">
         <div className="toprated">
           <button
-            className="w-8 bg-black"
+            className=""
             onClick={() => {
               let filterdata = filteredcard?.filter(
                 (data) => data.info.avgRating >= 0

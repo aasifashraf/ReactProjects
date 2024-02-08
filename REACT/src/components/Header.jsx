@@ -5,10 +5,11 @@ import { useContext } from "react";
 import userContext from "../constant/userContext";
 const Header = () => {
   // let btnlogin = "Login";
-  const [loginbtn, setloginbtn] = useState("Login");
-  const [search, setsearch] = useState([]);
+  const [loginbtn, setloginbtn] = useState("Logout");
 
-  const { username, id } = useContext(userContext);
+  const { setsearch } = useContext(userContext);
+
+  const { search, username, id } = useContext(userContext);
   return (
     <>
       <div className="navbar">
@@ -45,9 +46,9 @@ const Header = () => {
           <button
             className=" bg-blue-500 m-5"
             onClick={() => {
-              loginbtn === "Login"
-                ? setloginbtn("Logout")
-                : setloginbtn("Login");
+              loginbtn === "Logout"
+                ? setloginbtn("Login")
+                : setloginbtn("Logout");
             }}>
             {loginbtn}
           </button>
