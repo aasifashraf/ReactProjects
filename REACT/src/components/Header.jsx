@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import { logoURL } from "../constant/URL.JSX";
 import { useContext } from "react";
 import userContext from "../constant/userContext";
+import { useSelector } from "react-redux";
 const Header = () => {
   // let btnlogin = "Login";
   const [loginbtn, setloginbtn] = useState("Logout");
 
   const { setsearch } = useContext(userContext);
-
   const { search, username, id } = useContext(userContext);
+
+  //subscribing to store using use selector hook
+  const SelectItems = useSelector((store) => store.Cart.items);
+  console.log(SelectItems);
+
   return (
     <>
       <div className="navbar">
@@ -37,10 +42,14 @@ const Header = () => {
               <li>
                 <Link to="./About">About</Link>
               </li>
-              <li></li>
-              <li>
-                <i className="fa-solid fa-cart-shopping"></i>
-              </li>
+              <Link to="/Cart">
+                <li className=" relative">
+                  <i className="fa-solid fa-cart-shopping"></i>
+                  <span className=" font-black absolute top-[-1rem] left-[20px] bg-white w-1 h-1 rounded-md">
+                    {SelectItems.length}
+                  </span>
+                </li>
+              </Link>
             </ul>
           </nav>
           <button

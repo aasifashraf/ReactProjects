@@ -12,6 +12,10 @@ import ShimmerUI from "./constant/shimmerUI";
 // import InfoMenu from "./components/menuinfo";
 import userContext from "./constant/userContext";
 import { useContext } from "react";
+import { Provider } from "react-redux";
+import AppStore from "./Redux/AppStore";
+import { Provider } from "react-redux";
+import Cart from "./components/Cart";
 
 // here i used lazy loading or onloading demand or dynamic loading or dynamic import or chunkking or code splitting
 // because reduces loading time it loads only when it called or clicked
@@ -35,16 +39,18 @@ let Layout = () => {
   }, []);
   //over writting orginal value usecontext usename value
   return (
-    <userContext.Provider value={{ username: username2, search }}>
-      <div className="layout">
-        {/* //over writting orginal value usecontext usename value */}
-        <userContext.Provider
-          value={{ username: "username2", search, setsearch }}>
-          <Header />
-        </userContext.Provider>
-        <Outlet />
-      </div>
-    </userContext.Provider>
+    <Provider store={AppStore}>
+      <userContext.Provider value={{ username: username2 }}>
+        <div className="layout">
+          {/* //over writting orginal value usecontext usename value */}
+          <userContext.Provider
+            value={{ username: "Username", search, setsearch }}>
+            <Header />
+          </userContext.Provider>
+          <Outlet />
+        </div>
+      </userContext.Provider>
+    </Provider>
   );
 };
 
@@ -64,6 +70,7 @@ const approuter = createBrowserRouter([
           </Suspense>
         ),
       },
+      { path: "/Cart", element: <Cart /> },
     ],
     errorElement: <ErrorElement />,
   },

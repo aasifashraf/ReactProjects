@@ -1,16 +1,9 @@
-// import { restaurantImgURL } from "../constant/URL.JSX";
+import { useSelector } from "react-redux";
 
-import { useDispatch } from "react-redux";
-import { addItems } from "../Redux/StoreSlice";
-
-const CategoryItems = (props) => {
-  const { items } = props;
-  const { name, price, description, imageId, defaultPrice } = items?.card?.info;
-  // onclick dispatch action
-  const dispatch = useDispatch();
-  const handleCartItem = (items) => {
-    dispatch(addItems(items));
-  };
+const Cart = () => {
+  const cartItems = useSelector((store) => store.Cart.items);
+  const { name, price, description, imageId, defaultPrice } =
+    cartItems[0].card.info;
 
   return (
     <div className=" flex border-b-[1px] px-10 py-[3rem] justify-between items-center">
@@ -30,16 +23,16 @@ const CategoryItems = (props) => {
           }
           className=" w-[10rem] h-[8rem] bg-slate-300 rounded-lg"
         />
-        <button
+        {/* <button
           // onClick={handleCartItem} Use onClick={handleCartItem} if the function doesn't need any data.
           // onClick={handleCartItem(items)} Avoid using onClick={handleCartItem(items)} due to potential execution issues.
           onClick={() => handleCartItem(items)} //Use onClick={() => handleCartItem(items)} if the function needs the items data.
           className=" border-[1px] px-[3rem] py-2 absolute m-auto bg-white text-green-500 font-black rounded-lg left-4 bottom-[-1.1rem] border-gray-250 shadow-lg shadow-green-200">
           Add
-        </button>
+        </button> */}
       </div>
     </div>
   );
 };
 
-export default CategoryItems;
+export default Cart;
