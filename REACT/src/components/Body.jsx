@@ -53,10 +53,10 @@ let Body = () => {
   // if (filteredcard.length === 0 || null || undefined) {
   //   return <ShimmerUI />;
   // }
-  // let filterdata = filteredcard?.filter((data) =>
-  //   data.info.cuisines.includes(search)
-  // );
-  // settempcard(filterdata || []);
+  let filterdata = filteredcard?.filter((data) =>
+    data.info.cuisines.includes(search)
+  );
+  settempcard(filterdata || []);
 
   return filteredcard.length === 0 || null || undefined ? (
     <ShimmerUI />

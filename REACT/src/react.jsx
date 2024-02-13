@@ -18,7 +18,7 @@ import { Provider } from "react-redux";
 import Cart from "./components/Cart";
 
 // here i used lazy loading or onloading demand or dynamic loading or dynamic import or chunkking or code splitting
-// because reduces loading time it loads only when it called or clicked
+// because reduces loading time it loads only when its called or clicked
 const InfoMenu = lazy(() => import("./components/menuinfo"));
 
 let Layout = () => {

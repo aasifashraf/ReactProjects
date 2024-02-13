@@ -45,7 +45,7 @@ const Header = () => {
               <Link to="/Cart">
                 <li className=" relative">
                   <i className="fa-solid fa-cart-shopping"></i>
-                  <span className=" font-black absolute top-[-1rem] left-[20px] bg-white w-1 h-1 rounded-md">
+                  <span className=" font-black absolute top-[-1rem] left-[5px] bg-white w-1 h-1 rounded-md">
                     {SelectItems.length}
                   </span>
                 </li>
