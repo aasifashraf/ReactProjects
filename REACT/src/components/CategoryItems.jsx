@@ -28,7 +28,7 @@ const CategoryItems = (props) => {
             "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
             imageId
           }
-          className=" w-[10rem] h-[8rem] bg-slate-300 rounded-lg"
+          className="  w-[10rem] h-[8rem] bg-slate-300 rounded-lg"
         />
         <button
           // onClick={handleCartItem} Use onClick={handleCartItem} if the function doesn't need any data.

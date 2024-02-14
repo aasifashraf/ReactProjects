@@ -8,7 +8,7 @@ const InfoMenu = () => {
   const [offers, setoffers] = useState(null);
   const [offerSec, setofferSec] = useState(null);
 
-  const [showindex, setshowindex] = useState(null);
+  const [showindex, setshowindex] = useState(0);
 
   const { resId } = useParams();
   // console.log(useParams());

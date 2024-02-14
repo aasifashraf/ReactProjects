@@ -1,11 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearItems } from "../Redux/StoreSlice";
+import { clearItems, removeItems } from "../Redux/StoreSlice";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.Cart.items);
   const dispatch = useDispatch();
+
   const handleClearCart = () => {
     dispatch(clearItems(cartItems));
+  };
+
+  const handleRemoveItem = (cartItems) => {
+    dispatch(removeItems(cartItems));
   };
 
   return cartItems.length === 0 ? (
@@ -21,12 +26,12 @@ const Cart = () => {
           Clear Cart
         </button>
       </div>
-      <div className="flex px-10 py-[3rem] justify-between items-center flex-col ">
+      <div className="flex px-10 py-[3rem] justify-between items-center flex-col border-b-2 ">
         {/* Create a list of cart items using map */}
         {cartItems.map((item) => (
           <div
             key={item.id}
-            className="my-8 p-2 w-[45dvw] border-b-2 flex justify-between items-center">
+            className="my-4 p-9 w-[45dvw]  flex justify-between items-center  ">
             <div className="w-[30dvw]">
               <p className="font-medium">{item.card.info.name}</p>
               <p className="mb-4 text-sm">
@@ -40,14 +45,21 @@ const Cart = () => {
                 {item.card.info.description}
               </p>
             </div>
-            <div>
+            <div className=" relative ">
               <img
                 src={
                   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
                   item.card.info.imageId
                 }
-                className="w-[10rem] h-[8rem] bg-slate-300 rounded-lg"
+                className=" w-[10rem] h-[8rem] "
               />
+              <button
+                // onClick={handleCartItem} Use onClick={handleCartItem} if the function doesn't need any data.
+                // onClick={handleCartItem(items)} Avoid using onClick={handleCartItem(items)} due to potential execution issues.
+                onClick={() => handleRemoveItem(cartItems)} //Use onClick={() => handleCartItem(items)} if the function needs the items data.
+                className=" border-[1px] px-[3rem] py-2 absolute m-auto bg-white text-red-500 font-black rounded-lg left-4 bottom-[-1.1rem] border-gray-250 shadow-lg shadow-red-200">
+                Remove
+              </button>
             </div>
           </div>
         ))}

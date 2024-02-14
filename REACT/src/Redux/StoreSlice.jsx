@@ -11,7 +11,7 @@ const StoreSlice = createSlice({
       state.items.push(action.payload);
     },
     removeItems: (state, action) => {
-      state.items.pop();
+      state.items.pop(index);
     },
     clearItems: (state, action) => {
       state.items.length = 0;

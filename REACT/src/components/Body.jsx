@@ -11,7 +11,7 @@ let Body = () => {
   const [tempcard, settempcard] = useState([]);
   const { search } = useContext(userContext);
 
-  console.log(search);
+  // console.log(search);
   useEffect(() => {
     fetchapi();
   }, []);
@@ -50,13 +50,13 @@ let Body = () => {
       </div>
     );
   }
-  // if (filteredcard.length === 0 || null || undefined) {
-  //   return <ShimmerUI />;
-  // }
-  let filterdata = filteredcard?.filter((data) =>
-    data.info.cuisines.includes(search)
-  );
-  settempcard(filterdata || []);
+  if (filteredcard.length === 0 || null || undefined) {
+    return <ShimmerUI />;
+  }
+  // let filterdata = filteredcard?.filter((data) =>
+  //   data.info.cuisines.includes(search)
+  // );
+  // settempcard(filterdata || []);
 
   return filteredcard.length === 0 || null || undefined ? (
     <ShimmerUI />
